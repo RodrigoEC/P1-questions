@@ -1,0 +1,18 @@
+{
+  "files": {
+    "p.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Acordes aprendidos\n\ndef acordes(m1, m2):\n    lista_saida = []\n    for acorde in m1:\n        lista_saida.append(acorde)\n\n    lista_auxiliar = []\n    for acorde in m2:\n        lista_auxiliar.append(acorde)\n\n    for e in range(len(lista_saida) - 1, -1 , -1):\n        for i in range(len(lista_auxiliar) - 1, -1, -1):\n            if lista_auxiliar[i] == lista_saida[e]:\n                lista_auxiliar.pop(i)\n                \n    lista_saida += lista_auxiliar\n\n\n\n    return lista_saida\n\n\nm1 = ['c', 'd', 'dm']\nm2 = ['c', 'a']\nprint acordes(m1, m2), m1, m2\n\n",
+      "name": "p.py"
+    },
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\nacordes = getattr(undertest, 'acordes', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_exemplo(self):\n        m1 = ['c', 'd', 'dm']\n        m2 = ['c', 'a']\n        \n        assert acordes(m1, m2) == ['c', 'd', 'dm', 'a']\n        assert m1 == ['c', 'd', 'dm']\n        assert m2 == ['c', 'a']\n        \n        m1 = ['c', 'd']\n        m2 = ['c', 'a']\n        assert acordes(m1, m2) == ['c', 'd', 'a']\n\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "3272224fa465fa5367ab7dda33e5146c",
+  "iid": 6351941076516864,
+  "activity_revision": "1.0.0"
+}

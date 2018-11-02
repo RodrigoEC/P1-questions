@@ -1,0 +1,19 @@
+{
+  "files": {
+    "p.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Fila por Altura\n\n\ndef insere_na_fila(fila, nome, altura):\n    switch = False\n    tupla_entrada = (nome, altura)\n    fila.append(fila[-1])\n    for i in range(len(fila) - 1):\n        tupla = fila[i]\n        if tupla[1] >= altura and switch == False:\n            v_auxiliar = fila[i]\n            fila[i] = tupla_entrada\n            switch = True\n        \n        elif tupla[1] >= altura and switch == True:\n            fila[i] = v_auxiliar\n            v_auxiliar = tupla\n\n    tupla = fila[-1]\n    if tupla[1] < altura:\n        fila[-1] = tupla_entrada\n           \n    return fila",
+      "name": "p.py"
+    },
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\ninsere_na_fila = getattr(undertest, 'insere_na_fila', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_exemplo(self):\n\n        fila = [(\"maria\", 1.05), (\"joao\", 1.09), (\"ana\", 1.16)]\n        insere_na_fila(fila, \"jose\", 1.12)\n        assert fila == [(\"maria\", 1.05), (\"joao\", 1.09), (\"jose\", 1.12), (\"ana\", 1.16)], fila\n\n    def test_variacao_exemplo(self):\n\n        fila = [(\"andre\", 1.15), (\"daniel\", 1.19), (\"carlos\", 1.26)]\n        insere_na_fila(fila, \"marcos\", 1.17)\n        assert fila == [(\"andre\", 1.15), (\"marcos\", 1.17), (\"daniel\", 1.19), (\"carlos\", 1.26)], fila\n\n\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "8088e2d10a97fe000dfb819c25132a4e",
+  "iid": 5793490235555840,
+  "activity_revision": "1.0.0"
+}

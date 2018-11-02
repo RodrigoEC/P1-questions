@@ -1,0 +1,18 @@
+{
+  "files": {
+    "p.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Analytics vota\u00e7\u00e3o\n\n\n\ndef conta_votos(votacoes, idi):\n    lista_ids = []\n    lista_sn = []\n    for frase in votacoes:\n        ide = ''\n        sim_ou_nao = ''\n        contador_virg = 0\n\n        for caracter in frase:\n            if caracter == ',':\n                contador_virg += 1\n\n            if contador_virg == 1 and caracter != ',':\n                ide += caracter\n\n            elif contador_virg == 2 and caracter == ',':\n                lista_ids.append(ide)\n\n            elif contador_virg == 4 and caracter != ',':\n                sim_ou_nao += caracter\n                if sim_ou_nao == 'sim' or sim_ou_nao == 'nao': \n                    lista_sn.append(sim_ou_nao)\n\n    contador_s = 0\n    contador_n = 0\n    for i in range(len(lista_ids)):\n        if lista_ids[i] == str(idi):\n            if lista_sn[i] == 'sim':\n                contador_s += 1\n            elif lista_sn[i] == 'nao':\n                contador_n += 1\n\n    saida = [contador_s, contador_n]\n    return saida\n\n\n\n            ",
+      "name": "p.py"
+    },
+    "public_tests.py": {
+      "category": "public",
+      "data": "#!/usr/bin/env python\n# coding: utf-8\nimport unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\nconta_votos = getattr(undertest, 'conta_votos', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_simples(self):\n        votacao = []\n        votacao.append('uma,543,joao,PPPP,sim')\n        assert conta_votos(votacao, 543) == [1,0]\n\n    def test_exemplo(self):\n        votacao = []\n        votacao.append('uma,543,joao,PPPP,sim')\n        votacao.append('uma,543,marina,PPPP,nao')\n        votacao.append('uma,5,joao,PPPP,sim')\n        votacao.append('uma,543,julio,P,nao')\n        votacao.append('uma,543,carlos,PBBBB,sim')\n        votacao.append('uma,543,juliana,PP,sim')\n        votacao.append('uma,99,joao,PPPP,sim')\n\n        assert conta_votos(votacao, 543) == [3,2]\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "6d6cb3bd025da62cb989b643668bc263",
+  "iid": 5878242019901440,
+  "activity_revision": "2.0.1"
+}

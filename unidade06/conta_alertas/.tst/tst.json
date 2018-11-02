@@ -1,0 +1,19 @@
+{
+  "files": {
+    "p.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Conta Alertas\n\ndef conta_alertas_acude(medicoes):\n    contador = 0\n    for i in range(len(medicoes)):\n        diferenca = abs(medicoes[i] - medicoes[i - 1])\n        if medicoes[i] < 17 and diferenca < 10:\n            contador += 1\n    return contador\n",
+      "name": "p.py"
+    },
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\nconta_alertas_acude = getattr(undertest, 'conta_alertas_acude', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_exemplo(self):\n        medicoes = [50,50,50,23,21,17,15,60,65,15,15]\n        assert conta_alertas_acude(medicoes) == 2\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "819e730246549f36c3299a7fa3941db9",
+  "iid": 5324667980087296,
+  "activity_revision": "1.0.1"
+}

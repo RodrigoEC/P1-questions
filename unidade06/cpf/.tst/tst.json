@@ -1,0 +1,19 @@
+{
+  "files": {
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\ncalcula_digitos_verificacao = getattr(undertest, 'calcula_digitos_verificacao', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_basico(self):\n        assert calcula_digitos_verificacao('153245875') == '40'\n\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    },
+    "p.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Digitos de verifica\u00e7\u00e3o do CPF\n\n\ndef calcula_digitos_verificacao(entrada):\n    lista_saida = []\n    for repeticoes in range(2):\n        contador = 2\n        soma = 0\n        for i in range(len(entrada) - 1, - 1, -1):\n            soma += (int(entrada[i]) * contador)\n            contador += 1\n\n        digito = (10 * soma) % 11\n        if digito == 10:\n            digito = 0\n        lista_saida.append(digito)\n        entrada += str(digito)\n\n    saida = '%i%i' % (lista_saida[0], lista_saida[1])\n    return saida",
+      "name": "p.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "89f912c3a7f5f0e21619a60dbeae4708",
+  "iid": 5274036422574080,
+  "activity_revision": "1.0.1"
+}

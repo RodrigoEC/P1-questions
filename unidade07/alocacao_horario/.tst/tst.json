@@ -1,0 +1,18 @@
+{
+  "files": {
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\nget_choque_horario = getattr(undertest, 'get_choque_horario', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_example(self):\n        l1 = [\"oac-4\", \"so-5\", \"atal-5\", \"prog1-1\", \"es-4\"]\n        assert get_choque_horario(l1) == [\"oac-4\", \"es-4\", \"so-5\", \"atal-5\"]\n\n    def test2(self):\n        l1 = [\"oac-4\", \"loac-4\", \"so-5\", \"atal-5\", \"prog1-1\", \"es-4\"]\n        assert get_choque_horario(l1) == [\"oac-4\", \"loac-4\", \"es-4\", \"so-5\", \"atal-5\"]\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n"
+    },
+    "p.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Aloca\u00e7\u00e3o Hor\u00e1rio\n\n\ndef get_choque_horario(cronograma):\n    lista_saida = []\n    contador = 0\n    for i in range(len(cronograma)):\n        disciplina = cronograma[i]\n        contador = 0\n\n        for cadeira in cronograma:\n            if cadeira[-1] == disciplina[-1]:\n                contador += 1\n            \n            if contador == 2:\n                lista_saida.append(cronograma[i])\n                contador = 0\n        \n        for e in range(len(lista_saida) - 1, 0, -1):\n            disciplina = lista_saida[e]\n            prox_disciplina = lista_saida[e - 1]\n            if int(disciplina[-1]) < int(prox_disciplina[-1]):\n                lista_saida[e], lista_saida[e - 1] = lista_saida[e - 1], lista_saida[e]\n\n    return lista_saida",
+      "name": "p.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "1791196fd953d02e7daacdc357aedadd",
+  "iid": 6393490858573824,
+  "activity_revision": "1.0.3"
+}

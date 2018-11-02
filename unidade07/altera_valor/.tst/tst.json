@@ -1,0 +1,19 @@
+{
+  "files": {
+    "p.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Altera Valor\n\ndef altera_vetor_por_escalar(vetor, escalar):\n    for i in range(len(vetor)):\n        multi_escalar = vetor[i] * escalar\n        vetor[i] = multi_escalar",
+      "name": "p.py"
+    },
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\naltera_vetor_por_escalar = getattr(undertest, 'altera_vetor_por_escalar', None)\n\nclass PublicTests(unittest.TestCase):\n\n   def test_adicional_1(self):\n       vetor_1 = [1, 2, 3]\n       assert altera_vetor_por_escalar(vetor_1, -1) == None\n       assert vetor_1 == [-1, -2, -3]\n       assert altera_vetor_por_escalar(vetor_1, 2) == None\n       assert vetor_1 == [-2, -4, -6]\n\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "8dcf8a8dd50eba119f2533ccd70b7d06",
+  "iid": 5785070287716352,
+  "activity_revision": "2.0.2"
+}

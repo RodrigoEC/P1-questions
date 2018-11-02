@@ -1,0 +1,18 @@
+{
+  "files": {
+    "p.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Caixa Alta\n\ndef caixa_alta(frase):\n    string = \"\"\n    frase = \" \" + frase + \" \"\n    for i in range(1, len(frase) - 1):\n\t\tif frase[i - 1] == \" \" and frase[i + 1] == \" \":\n\t\t\tstring += frase[i].lower()\n\t\telif frase[i - 1] == \" \" and frase[i + 1] != \" \":\n\t\t\tstring += frase[i].upper()\n\t\telif frase[i - 1] != \" \" or frase[i + 1] == \" \":\n\t\t\tstring += frase[i]\n    return string",
+      "name": "p.py"
+    },
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\ncaixa_alta = getattr(undertest, 'caixa_alta', None)\n\nclass PublicTests(unittest.TestCase):\n\n   def test_exemplo(self):\n     assert caixa_alta(\"A primeira letra de cada palavra\") == \"a Primeira Letra De Cada Palavra\"\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "ccbc94f5f5d0dd1069eab1c59724b608",
+  "iid": 5825981797367808,
+  "activity_revision": "1.0.1"
+}

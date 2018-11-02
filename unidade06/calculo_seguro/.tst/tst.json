@@ -1,0 +1,19 @@
+{
+  "files": {
+    "p.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# C\u00e1lculo de Seguro\n\ndef calcula_seguro(valor, lista):\n\n    pontos = 0\n    if lista[0] <= 21 or lista[0] > 60:\n        pontos += 20\n    elif lista[0] >= 22 and lista[0] <= 30:\n        pontos += 15\n    elif lista[0] >= 31 and lista[0] <= 40:\n        pontos += 12\n    elif lista[0] >= 41 and lista[0] <= 60:\n        pontos += 10\n\n    if lista[1] == True:\n        pontos += 10\n    else:\n        pontos += 20\n        \n    if lista[2] == True:\n        pontos += 20\n    else:\n        pontos += 10\n\n    if lista[3] == True:\n        pontos += 20\n    else:\n        pontos += 10\n        \n    if lista[4] == True:\n        pontos += 20\n    else:\n        pontos += 10\n        \n    if lista[5] == True:\n        pontos += 10\n    else:\n        pontos += 20\n        \n    if lista[6] == 'Trabalho':\n        pontos += 10\n    elif lista[6] == 'Lazer' or lista[6] == 'Misto':\n        pontos += 20\n    \n    lista_saida = [pontos,]\n    if pontos <= 80:\n        lista_saida.append('Risco Baixo')\n        banco_paga = valor / 10\n        lista_saida.append(banco_paga)\n\n    elif pontos > 80 and pontos <= 100:\n        lista_saida.append('Risco Medio')\n        banco_paga = (valor * 2) / 10\n        lista_saida.append(banco_paga)\n\n    else:\n        lista_saida.append('Risco Alto')\n        banco_paga = (valor * 3) / 10\n        lista_saida.append(banco_paga)\n\n    return lista_saida\n\nprint calcula_seguro(2000.0, [21, True, True, True, True, True, 'Misto'])\n\n",
+      "name": "p.py"
+    },
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\ncalcula_seguro = getattr(undertest, 'calcula_seguro', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_basico(self):\n        assert calcula_seguro(2000.0, [21, True, True, True, True, True, 'Misto']) == [120, \"Risco Alto\", 600.0]\n\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "bccdd288582f7de7e2cbb3d0713e837c",
+  "iid": 5821725887430656,
+  "activity_revision": "1.0.0"
+}
