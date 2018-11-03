@@ -1,0 +1,19 @@
+{
+  "files": {
+    "p.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Busca em matriz\n\ndef busca_matriz(matriz, numero):\n    for l in range(len(matriz)):\n        for e in range(len(matriz[l])):\n            num = matriz[l][e]\n            if num == numero:\n                return (l, e)\n    return",
+      "name": "p.py"
+    },
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\nbusca_matriz = getattr(undertest, 'busca_matriz', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_exemplo_1(self):\n        matriz = [\n            [2, 3, 5, 3, 1],\n            [3, 2, 1, 5, 6],\n            [1, 2, 3, 2, 1],\n        ]\n        assert busca_matriz(matriz, 4) == None\n        \nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "9d70b032c14e41c5669bec3b89c1d53b",
+  "iid": 5794792147517440,
+  "activity_revision": "1.0.0"
+}
