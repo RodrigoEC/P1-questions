@@ -1,0 +1,19 @@
+{
+  "files": {
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\nbusca_matriz = getattr(undertest, 'busca_matriz', None)\n\nclass PublicTests(unittest.TestCase):\n    def test_exemplo_1(self):\n        matriz = [\n            [2, 3, 5, 3, 1],\n            [3, 2, 1, 5, 6],\n            [1, 2, 3, 2, 1],\n        ]\n        assert busca_matriz(matriz, 4) == []\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    },
+    "busca_todos.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Busca Todos\n\ndef busca_matriz(matriz, numero):\n    lista_saida = []\n    for coluna in range(len(matriz)):\n        for linha in range(len(matriz[coluna])):\n            if matriz[coluna][linha] == numero:\n                lista_saida.append((coluna,linha))\n  \n    return lista_saida",
+      "name": "busca_todos.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "1d7e49a103b5dbed621e2a2e34a3a4a2",
+  "iid": 5792204027068416,
+  "activity_revision": "1.0.0"
+}
