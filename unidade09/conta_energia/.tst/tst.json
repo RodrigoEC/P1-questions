@@ -1,0 +1,18 @@
+{
+  "files": {
+    "public_tests.py": {
+      "category": "public",
+      "data": "# coding: utf-8\nimport unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\ncalcula_conta = getattr(undertest, 'calcula_conta', None)\n\nclass PublicTests(unittest.TestCase):\n    \n    def test_1(self):\n        tabela = [[\"Equipamento\", \"Quantidade\", \"Tempo de Uso (horas)\", \"Potencia (Watts)\"], [\"AR-CONDICIONADO\", 1, 240, 2000], [\"COMPUTADOR\", 2, 150, 180], [\"TV\", 3, 150, 110]]\n\n        assert calcula_conta(tabela) == \"R$ 163.38\"\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n"
+    },
+    "conta_energia.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Conta energia\n\ndef calcula_conta(tabela):\n    soma = 0\n    for linha in range(1, len(tabela)):\n        quant = float(tabela[linha][1]) * tabela[linha][2]* tabela[linha][3] / 1000\n        soma += quant\n\n    saida = soma * 0.28\n    return \"R$ %.2f\" % saida",
+      "name": "conta_energia.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "a5292431bde6516dc4a5ddf2490ae215",
+  "iid": 5813313522892800,
+  "activity_revision": "1.0.0"
+}

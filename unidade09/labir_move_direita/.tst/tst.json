@@ -1,0 +1,19 @@
+{
+  "files": {
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\nmove_direita = getattr(undertest, 'move_direita', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_1(self):\n        labirinto1 = [\n          ['P', '*', ' ', ' '],\n          ['P', ' ', 'P', ' '],\n          ['P', 'P', 'P', ' '],\n        ]\n\n        assert move_direita(labirinto1) == (0, 2)\n        assert labirinto1 ==  [\n          ['P', ' ', '*', ' '],\n          ['P', ' ', 'P', ' '],\n          ['P', 'P', 'P', ' '],\n        ]\n\n    def test_2(self):\n        labirinto2 = [\n          ['P', 'P', ' ', ' '],\n          ['P', '*', 'P', ' '],\n          ['P', 'P', 'P', ' '],\n        ]\n        assert move_direita(labirinto2) == (1, 1)\n        \nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    },
+    "labir.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Labir move direita\n\ndef move_direita(labirinto):\n    for linha in range(len(labirinto)):\n        for elemento in range(len(labirinto[linha])):\n            if labirinto[linha][elemento] == '*':\n\n                if elemento == len(labirinto[linha]) - 1:\n                    return (linha, elemento)\n\n                elif labirinto[linha][elemento + 1] == 'P':\n                    return (linha, elemento)\n\n                elif labirinto[linha][elemento + 1] == ' ':\n                    labirinto[linha][elemento], labirinto[linha][elemento + 1] \\\n                     = labirinto[linha][elemento + 1], labirinto[linha][elemento]\n                    return (linha, elemento + 1)",
+      "name": "labir.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "b2d8af3bb4e4ee7896056e8d89ff1ff3",
+  "iid": 5261809925750784,
+  "activity_revision": "1.0.0"
+}
