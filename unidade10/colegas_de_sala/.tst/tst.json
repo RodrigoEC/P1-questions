@@ -1,0 +1,19 @@
+{
+  "files": {
+    "colegas_de_sala.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n\n################################################\n# Disciplina: Programa\u00e7\u00e3o 01 - 2018.1          #\n# Nome: Rodrigo Eloy Cavalcanti                #\n# Matr\u00edcula: 118210111                         #\n# E-mail: rodrigo.cavalcanti@ccc.ufcg.edu.br   #\n# Atividade: Colegas de Sala                   #\n# Unidade: 10                                  #\n################################################\n\n\ndef colegas_de_sala(profs_salas, prof):\n    professores_mesma_sala = []\n\n    sala_prof = profs_salas[prof]\n    for (professor, sala) in profs_salas.items():\n        if sala == sala_prof and professor != prof:\n            professores_mesma_sala.append(professor)\n    \n    return professores_mesma_sala\n        ",
+      "name": "colegas_de_sala.py"
+    },
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\ncolegas_de_sala = getattr(undertest, 'colegas_de_sala', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_example(self):\n\n        salasprofs = {\n            'Franklin': 206,    'Tiago':206,        'Eliane': 206,\n            'Adalberto':209,    'Wilkerson':207,    'Dalton': 204,\n            'Jorge': 204\n        }\n\n        assert set(colegas_de_sala(salasprofs, 'Franklin')) == set(['Tiago', 'Eliane'])\n        assert set(colegas_de_sala(salasprofs, 'Adalberto')) == set([])\n    \nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "425594949bc91a56a11aed4001824059",
+  "iid": 4949822494736384,
+  "activity_revision": "1.0.0"
+}

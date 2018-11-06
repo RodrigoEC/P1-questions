@@ -1,0 +1,19 @@
+{
+  "files": {
+    "agrupa_matriculas.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n\n################################################\n# Disciplina: Programa\u00e7\u00e3o 01 - 2018.1          #\n# Nome: Rodrigo Eloy Cavalcanti                #\n# Matr\u00edcula: 118210111                         #\n# E-mail: rodrigo.cavalcanti@ccc.ufcg.edu.br   #\n# Atividade: Agrupa Matr\u00edculas                 #\n# Unidade: 10                                  #\n################################################\n\ndef get_periodo(matricula):\n    return matricula[0] + matricula[1] + matricula[2]\n\ndef agrupa_por_periodo(turma):\n    agrupa_por_matricula = {}\n    \n    for matricula in turma:\n        periodo = get_periodo(matricula)\n\n        if agrupa_por_matricula.has_key(periodo):\n            agrupa_por_matricula[periodo] += 1\n        else:\n            agrupa_por_matricula[periodo] = 1\n    \n    return agrupa_por_matricula",
+      "name": "agrupa_matriculas.py"
+    },
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\nagrupa_por_periodo = getattr(undertest, 'agrupa_por_periodo', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_exemplo(self):\n        turma = [\n            '0511114', '0521137', '0611001',\n            '0611003', '0611004', '0621006',\n            '0811007', '0811009', '0811502',\n            '0811604', '0811605',\n        ]\n        assert agrupa_por_periodo(turma) == {\n            '051': 1,\n            '052': 1,\n            '061': 3,\n            '062': 1,\n            '081': 5,\n        }\n    \nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "91e33c1d2bc5b17c5767037ab314bd11",
+  "iid": 5779413547352064,
+  "activity_revision": "1.0.0"
+}

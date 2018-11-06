@@ -1,0 +1,19 @@
+{
+  "files": {
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\nagrupa_negativos = getattr(undertest, 'agrupa_negativos', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_example(self):\n        assert agrupa_negativos([10, -2, -7, 8]) == {\"nao-negativos\":[10, 8], \"negativos\":[-2,-7]}\n        assert agrupa_negativos([-1, -5]) == {\"nao-negativos\":[ ], \"negativos\":[-1, -5]}\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    },
+    "agrupa_negativos.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n\n################################################\n# Disciplina: Programa\u00e7\u00e3o 01 - 2018.1          #\n# Nome: Rodrigo Eloy Cavalcanti                #\n# Matr\u00edcula: 118210111                         #\n# E-mail: rodrigo.cavalcanti@ccc.ufcg.edu.br   #\n# Atividade: Agrupa negativos                  #\n# Unidade: 10                                  #\n################################################\n\ndef agrupa_negativos(lista):\n    num_agrupados = {\n        \"nao-negativos\": [],\n        \"negativos\": []\n    }\n\n    for numero in lista:\n        if numero < 0:\n            num_agrupados[\"negativos\"].append(numero)\n        else:\n            num_agrupados[\"nao-negativos\"].append(numero)\n    \n    return num_agrupados\n",
+      "name": "agrupa_negativos.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "1c56da318b21e51fb65220a412df7591",
+  "iid": 5839616439484416,
+  "activity_revision": "1.0.0"
+}
