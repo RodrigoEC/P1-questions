@@ -1,0 +1,19 @@
+{
+  "files": {
+    "matriz_menor.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Matriz menor\n\n\ndef matriz_menor(matriz1, matriz2):\n    lista_aux = []\n    lista_saida = []\n    for linha in range(len(matriz1)):\n        for numero in range(len(matriz1[linha])):\n            if matriz1[linha][numero] <= matriz2[linha][numero]:\n                lista_aux.append(matriz1[linha][numero])\n\n            else:\n                lista_aux.append(matriz2[linha][numero])\n\n    contador = 1\n    num_de_listas = (len(lista_aux) / len(matriz1))\n    lista_provisoria = []\n    for numero in lista_aux:\n        lista_provisoria.append(numero)\n        \n        if contador % num_de_listas == 0:\n            lista_saida.append(lista_provisoria)\n            lista_provisoria = []\n            \n        contador += 1\n\n    return lista_saida",
+      "name": "matriz_menor.py"
+    },
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\nmatriz_menor = getattr(undertest, 'matriz_menor', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_1(self):\n        M1 = [[1,2,3], [13,14,15], [7,8,9]]\n        M2= [[10,11,12], [4,5,6], [7,8,9]]\n        M3= [[1,2,3], [0,0,0], [7,8,9]]\n        \n        assert matriz_menor(M1, M2) == [[1,2,3],[4,5,6],[7,8,9]]\n        assert matriz_menor(M1, M3) == [[1,2,3],[0,0,0],[7,8,9]]\n        \nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "36b3e96f82c269e0ea7e98035d14d909",
+  "iid": 6406094305886208,
+  "activity_revision": "1.0.0"
+}

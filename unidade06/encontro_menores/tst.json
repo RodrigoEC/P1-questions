@@ -1,9 +1,0 @@
-{
-  "tests": [
-    {
-      "category": "public",
-      "script": "python public_tests.py",
-      "type": "script"
-    }
-  ]
-}
