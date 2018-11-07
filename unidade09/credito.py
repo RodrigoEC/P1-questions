@@ -3,10 +3,10 @@
 # Matrícula: 118210111
 # Crédito Matrícula
 
-def num_creditos(bd_ufcg, matricula):
+def num_creditos(bd_ufcg, m):
     contador = 0
-    for (disciplina, matri) in bd_ufcg:
-        if matri == matricula:
-            contador += 1
-
+    for (disciplina) in bd_ufcg:
+        for matricula in disciplina:
+            if matricula == m:
+                contador += 1
     return contador

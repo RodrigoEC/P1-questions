@@ -1,0 +1,18 @@
+{
+  "files": {
+    "public_tests.py": {
+      "category": "public",
+      "data": "# coding: utf-8\nimport unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\nnum_creditos = getattr(undertest, 'num_creditos', None)\n\nclass PublicTests(unittest.TestCase):\n    \n    def test_1(self):\n       bd_ufcg = {\"UASC\": {(\"Programa\u00e7\u00e3o I\", 4): [\"11624100\", \"11624400\"], (\"Programa\u00e7\u00e3o II\", 4): [\"11624200\"], (\"Teoria dos Grafos\", 2): [\"11624200\"]}, \"UAF\": {(\"F\u00edsica Cl\u00e1ssica\", 4): [\"11624200\"], (\"F\u00edsica Moderna\", 4): [\"11624300\", \"11624500\", \"11624600\"]}, \"UAM\": {(\"C\u00e1lculo I\", 4): [\"11624100\", \"11624300\"], (\"\u00c1lgebra Linear\", 4): [\"11624300\"]}}\n        \n       assert num_creditos(bd_ufcg, \"11624100\") == 8\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n"
+    },
+    "credito.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n#coding: utf-8\n\n\ndef num_creditos(bd_ufcg, matricula):\n    s_creditos = 0\n    for dicionario in bd_ufcg.values():\n        for (tupla, matriculas) in dicionario.items():\n            for m in matriculas:\n                if m == matricula:\n                    s_creditos += tupla[1]\n    \n    return s_creditos\n\n\n\n\n\nbd_ufcg = {\"UASC\": {(\"Programa\u00e7\u00e3o I\", 4): [\"11624100\", \"11624400\"], (\"Programa\u00e7\u00e3o II\", 4): [\"11624200\"], (\"Teoria dos Grafos\", 2): [\"11624200\"]},\n           \"UAF\": {(\"F\u00edsica Cl\u00e1ssica\", 4): [\"11624200\"], (\"F\u00edsica Moderna\", 4): [\"11624300\", \"11624500\", \"11624600\"]},\n           \"UAM\": {(\"C\u00e1lculo I\", 4): [\"11624100\", \"11624300\"], (\"\u00c1lgebra Linear\", 4): [\"11624300\"]}\n           }\n\nprint num_creditos(bd_ufcg, \"11624100\")",
+      "name": "credito.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "4dd1d66535cb1cc0cb0a70f2180e8961",
+  "iid": 5795528197537792,
+  "activity_revision": "1.0.0"
+}

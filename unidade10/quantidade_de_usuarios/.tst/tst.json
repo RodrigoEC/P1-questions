@@ -1,0 +1,19 @@
+{
+  "files": {
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\nquantidade_usuarios = getattr(undertest, 'quantidade_usuarios', None)\n\nclass PublicTests(unittest.TestCase):\n \n    def test_example(self):\n\n        lsd = {1234:['Andrey'], 1226:['Nazareno', 'Livia'], 9999:['administrador'] }\n        deq = {1114:['Ana'] }\n\n        assert quantidade_usuarios(lsd) == 3\n        assert quantidade_usuarios(deq) == 1\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    },
+    "quant.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Quantidade de usu\u00e1rios\n\ndef quantidade_usuarios(cadastro):\n    acumulador = 0\n    for (key, nomes) in cadastro.items():\n        if key != 9999:\n            acumulador += len(nomes)\n    \n    return acumulador",
+      "name": "quant.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "5f4c304c583c1517c0c2b66826a471a3",
+  "iid": 6456664337154048,
+  "activity_revision": "1.0.0"
+}
