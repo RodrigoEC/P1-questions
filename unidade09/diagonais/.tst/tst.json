@@ -1,0 +1,19 @@
+{
+  "files": {
+    "diagonais.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Diagonais\n\ndef diagonais(matriz):\n    lista_diagonal_principal = []\n    lista_diagonal_secundaria = []\n    for linha in range(len(matriz)):\n        for coluna in range(len(matriz[linha])):\n\n            numero = matriz[linha][coluna]\n            if linha == coluna:\n                lista_diagonal_principal.append(numero)\n            \n            if linha + coluna == len(matriz) - 1:\n                lista_diagonal_secundaria.append(numero)\n        \n    nova_matriz = [lista_diagonal_principal, lista_diagonal_secundaria]\n\n    return nova_matriz",
+      "name": "diagonais.py"
+    },
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\ndiagonais = getattr(undertest, 'diagonais', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_1(self):\n        M = [[1,2,3], [4,5,6], [7,8,9]]\n        assert diagonais(M) == [[1,5,9],[3,5,7]]\n        \nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "452c963304525a9a4f793f45bbc7eab0",
+  "iid": 6346705511383040,
+  "activity_revision": "1.0.0"
+}

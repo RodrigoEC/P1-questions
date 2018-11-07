@@ -1,0 +1,19 @@
+{
+  "files": {
+    "toppl.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Toppl\n\ndef my_in(lista, elemento):\n    for e in lista:\n        if elemento == e:\n            return True\n\n    return False\n\ndef filtra_alunos(alunos, inscritos, media):\n    contador = 0\n    for tupla in range(len(alunos) -1, -1, -1):\n        if my_in(inscritos, alunos[tupla][0]) == False or alunos[tupla][1] < media:\n            alunos.pop(tupla)\n            contador += 1\n\n    return contador",
+      "name": "toppl.py"
+    },
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\nfiltra_alunos = getattr(undertest, 'filtra_alunos', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_1(self):\n        inscritos = [121, 123, 124]\n        alunos = [ (120,8.0), (121,7.5), (122,5.0), (123,6.0), (124,9.0), (125,4.0) ]\n        assert filtra_alunos(alunos, inscritos, 7.0) == 4\n        assert alunos == [ (121,7.5), (124,9.0) ]\n        \nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "596c61e3b1688a7a9bc7ccb27d0c8bc6",
+  "iid": 6413363403816960,
+  "activity_revision": "1.0.0"
+}

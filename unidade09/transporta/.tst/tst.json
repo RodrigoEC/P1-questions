@@ -1,0 +1,19 @@
+{
+  "files": {
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\ntransposta = getattr(undertest, 'transposta', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_simples(self):\n        M = [[1,1,1,1],[2,2,2,2],[3,3,3,3]]\n        assert transposta(M) == [[1,2,3],[1,2,3],[1,2,3],[1,2,3]]\n        assert M == [[1,1,1,1],[2,2,2,2],[3,3,3,3]]\n        \nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    },
+    "transporta.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Transporta\n\ndef transposta(matriz):\n    nova_matriz = []\n    lista_aux = []\n    for coluna in range(len(matriz[0])):\n        for linha in range(len(matriz)):\n            lista_aux.append(matriz[linha][coluna])\n\n            if len(lista_aux) == len(matriz):\n                nova_matriz.append(lista_aux)\n                lista_aux = []\n                break\n\n    return nova_matriz",
+      "name": "transporta.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "e7aa83c9a709c26824d75c06bcaf70d6",
+  "iid": 5322271925207040,
+  "activity_revision": "1.0.2"
+}

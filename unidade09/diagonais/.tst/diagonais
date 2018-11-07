@@ -1,0 +1,20 @@
+# coding: utf-8
+# Aluno: Rodrigo Eloy Cavalcanti
+# Matrícula: 118210111
+# Diagonais
+
+def diagonais(matriz):
+    lista_diagonal_principal = []
+    lista_diagonal_secundaria = []
+    
+    for linha in range(len(matriz)):
+        for coluna in range(len(matriz[linha])):
+            if linha == coluna:
+                lista_diagonal_principal.append(matriz[linha][coluna])
+            
+            elif linha + coluna == len(matriz) - 1:
+                lista_diagonal_secundaria.append(matriz[linha][coluna])
+        
+    nova_matriz = [lista_diagonal_principal, lista_diagonal_secundaria]
+
+    return nova_matriz

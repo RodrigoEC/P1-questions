@@ -1,0 +1,19 @@
+{
+  "files": {
+    "zera.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Zera acima ou abaixo\n\ndef zera_acima_ou_abaixo(matriz):\n    soma_acima = 0\n    soma_abaixo = 0\n    for linha in range(len(matriz)):\n        for coluna in range(len(matriz[linha])):\n            \n            if coluna > linha:\n                soma_acima += matriz[linha][coluna]\n            \n            elif coluna < linha:\n                soma_abaixo += matriz[linha][coluna]\n        \n    \n    for linha in range(len(matriz)):\n        for coluna in range(len(matriz[linha])):\n\n            if soma_abaixo > soma_acima:\n\n                if coluna < linha:\n                    matriz[linha][coluna] = 0\n            \n            elif soma_acima > soma_abaixo:\n\n                if coluna > linha:\n                    matriz[linha][coluna] = 0\n            \n            else:\n\n                if coluna != linha:\n                    matriz[linha][coluna] = 0",
+      "name": "zera.py"
+    },
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\nzera_acima_ou_abaixo = getattr(undertest, 'zera_acima_ou_abaixo', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_exemplo_1(self):\n        M = [[1,2,3],\n             [4,5,6],\n             [7,8,9]]\n        zera_acima_ou_abaixo(M)\n        assert M == [[1,2,3],\n                     [0,5,6],\n                     [0,0,9]]\n        \nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "f9ac70021f16ee5f08ae56df92053662",
+  "iid": 5306015675318272,
+  "activity_revision": "1.0.3"
+}

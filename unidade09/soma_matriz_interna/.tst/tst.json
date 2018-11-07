@@ -1,0 +1,19 @@
+{
+  "files": {
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\nsoma_matriz_interna = getattr(undertest, 'soma_matriz_interna', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_1(self):\n        M2 = [ [1, 2, 3], [4, 5, 6], [7, 8, 9] ]\n        assert soma_matriz_interna(M2, (1,1),(2,2)) == 5 + 6 + 8 + 9\n        \nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    },
+    "soma.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Soma matriz interna\n\ndef soma_matriz_interna(matriz, inicio, fim):\n    soma = 0\n    for linha in range(len(matriz)):\n\n        for coluna in range(len(matriz[linha])):\n\n            if (linha >= inicio[0] and linha <= fim[0]) and\\\n                    (coluna >= inicio[1] and coluna <= fim[1]):\n                soma += matriz[linha][coluna]\n\n            elif (linha <= inicio[0] and linha >= fim[0]) and\\\n                    (coluna <= inicio[1] and coluna >= fim[1]):\n                soma += matriz[linha][coluna]\n    \n    return soma",
+      "name": "soma.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "36b69d77e3d42b808abc12a092e3dc93",
+  "iid": 5242145015332864,
+  "activity_revision": "1.0.1"
+}

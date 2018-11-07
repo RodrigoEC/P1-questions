@@ -1,0 +1,24 @@
+{
+  "files": {
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\nsoma_linha_e_coluna = getattr(undertest, 'soma_linha_e_coluna', None)\n\nclass AcceptanceTests(unittest.TestCase):\n\n    def test_exemplo_1(self):\n        matriz = [\n            [2, 3, 5, 3, 1],\n            [3, 2, 1, 5, 6],\n            [3, 2, 3, 2, 1],\n        ]\n\n    \n        assert soma_linha_e_coluna(matriz,1,1) == 20\n        assert soma_linha_e_coluna(matriz,0,0) == 18\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    },
+    "soma.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Soma linha e coluna\n\ndef soma_linha_e_coluna(matriz, l, c):\n    soma = 0\n    for linha in range(len(matriz)):\n        for coluna in range(len(matriz[linha])):\n            if linha == l and c != coluna:\n                soma += matriz[l][coluna]\n            \n            elif coluna == c and linha != l:\n                soma += matriz[linha][c]\n    \n    return soma\n\n\n\n",
+      "name": "soma.py"
+    },
+    "qcheck.json": {
+      "category": "public",
+      "data": "{\n  \"quality\": [\n    {\n      \"cc\": 3,\n      \"pep8\": 0,\n      \"lloc\": 8,\n      \"vhalstead\": 38.04,\n      \"header\": 4\n    }\n  ]\n}",
+      "name": "qcheck.json"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "43e37669e1a4912447a5a5ba3dcef091",
+  "iid": 5861608685305856,
+  "activity_revision": "1.0.1"
+}
