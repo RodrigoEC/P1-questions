@@ -1,0 +1,18 @@
+{
+  "files": {
+    "p.py": {
+      "category": "answer",
+      "data": "\n# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Pi por aproxima\u00e7\u00f5es\n\nerro = float(raw_input())\nswitch = True\ncontador = 0\npi = 0\nwhile True:\n    if switch == True:\n        divisor = 1 + contador\n        switch = False\n        pi_ant = 4 * (1.0 / divisor)\n    else:\n        divisor = -1 * (1 + contador)\n        pi_ant = -4 * (1.0 / divisor)\n        switch = True\n\n    pi = 4 * (1.0 / divisor + (pi / 4.0))\n    \n    print '%.6f' % pi\n    if pi_ant < erro:\n        break\n    contador += 2",
+      "name": "p.py"
+    },
+    "qcheck.json": {
+      "category": "public",
+      "data": "{\n  \"quality\": [\n    {\n      \"cc\": 3,\n      \"pep8\": 0,\n      \"lloc\": 15,\n      \"vhalstead\": 131.77,\n      \"header\": 3\n    }\n  ]\n}"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "03ac43b6461fd6a854ab765f22ad9c75",
+  "iid": 5867071682379776,
+  "activity_revision": "1.0.1"
+}

@@ -1,0 +1,19 @@
+{
+  "files": {
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\ndesloca = getattr(undertest, 'desloca', None)\n\nclass PublicTests(unittest.TestCase):\n\n    def test_exemplo(self):\n  \n        l1 = [2,6,9,11,13,5]\n        desloca(l1, 2, 4)\n        assert l1 == [2,6,11,13,9,5]\n\n    def test_exemplo2(self):\n        l1 = [0,1,2,3,4,5,6]\n        desloca(l1, 4, 6)\n        assert l1 == [0,1,2,3,5,6,4]\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    },
+    "p.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Desloca Elemento\n\ndef desloca(lista, origem, destino):\n    num_origem = lista.pop(origem)\n    lista.append(num_origem)\n    \n    for i in range(len(lista) - 1, 0, -1):\n        if i == destino: break\n        lista[i], lista[i - 1] = lista[i - 1], lista[i]",
+      "name": "p.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "f719079e745c5abc6b482d46b1c0be76",
+  "iid": 5208176454533120,
+  "activity_revision": "1.0.0"
+}
