@@ -7,13 +7,13 @@
     },
     "inverte.py": {
       "category": "answer",
-      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Inverte dicionario\n\ndef inverte_dicionario(d):\n    dicionario = {}\n\n    for (key, valor) in d.items():\n        if type(valor) == list:\n            for v in valor:\n                if dicionario.has_key(v):\n                    dicionario[v].append(key)\n            \n                else:\n\n                    dicionario[v] = [key]\n\n        else:\n            if dicionario.has_key(valor):\n                dicionario[valor].append(key)\n            \n            else:\n\n                dicionario[valor] = [key]\n\n    return dicionario\n\nm = {\"c\": [1, 2] , \"b\": 0}\n\nprint inverte_dicionario(m)",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Inverte dicionario\n    \ndef ordem(lista):\n\tfor i in range(len(lista)-1, 0, -1):\n\t\tif lista[i] < lista[i-1]:\n\t\t\tlista[i-1], lista[i] = lista[i], lista[i-1]\n\t\telse:\n\t\t\tbreak\n\ndef meu_in(dic, ele):\n\tfor chave in dic.keys():\n\t\tif chave == ele:\n\t\t\treturn True\n\treturn False\n\ndef inverte_dicionario(dic):\n\tcache = {}\n\tfor chave, valor in dic.iteritems():\n\t\tif meu_in(cache, valor):\n\t\t\tcache[valor].append(chave)\n\t\t\tordem(cache[valor])\n\n\t\telse:\n\t\t\tcache[valor] = [chave]\n\n\treturn cache",
       "name": "inverte.py"
     }
   },
   "kind": "assignment",
   "name": null,
-  "checksum": "2c520872505b3ef05036355e4ae86148",
+  "checksum": "121877f51f6a5e2215a7c0c36f064777",
   "iid": 6392644481581056,
   "activity_revision": "1.1.0"
 }

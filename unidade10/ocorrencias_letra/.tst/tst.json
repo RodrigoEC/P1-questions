@@ -1,0 +1,14 @@
+{
+  "files": {
+    "ocorrencias.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Ocorrencias letra\n\nfrase = raw_input()\nletra_mais_ocorrente = \"\"\nmaior = 0\nfor letra in frase:\n    contador = 0\n    for caracter in frase:\n        if letra.lower() == caracter.lower() and letra != \" \":\n            contador += 1\n\n    if contador > maior:\n        maior = contador\n        letra_mais_ocorrente = letra\n\nprint letra_mais_ocorrente.lower(), maior",
+      "name": "ocorrencias.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "4f993113ed09667f7c9c8d9eaedc3b8f",
+  "iid": 5780201350889472,
+  "activity_revision": "1.0.0"
+}

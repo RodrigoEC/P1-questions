@@ -1,0 +1,19 @@
+{
+  "files": {
+    "resumos.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Resumos iguais\n\ndef agrupa_resumos_iguais(lista):\n    resumo_dos_numeros = {}\n    for numero in lista:\n        soma = 0\n        for caracter in str(numero):\n            soma += int(caracter)\n        \n        if not resumo_dos_numeros.has_key(soma):\n            resumo_dos_numeros[soma] = [numero]\n        \n        else:\n            resumo_dos_numeros[soma].append(numero)\n    \n    return resumo_dos_numeros",
+      "name": "resumos.py"
+    },
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\nagrupa_resumos_iguais = getattr(undertest, 'agrupa_resumos_iguais', None)\n\nclass PublicTests(unittest.TestCase):\n \n    def test_1_caso_base(self):\n        lista1 = [20000, 3435, 159, 200, 2] \n        self.assertEquals(agrupa_resumos_iguais(lista1), {2:[20000, 200, 2], 15:[3435,159]})\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "026dff3a6bd3a600ae586033c1e253b7",
+  "iid": 5884449992474624,
+  "activity_revision": "1.0.0"
+}

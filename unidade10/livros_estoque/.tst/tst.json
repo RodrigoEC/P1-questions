@@ -1,0 +1,19 @@
+{
+  "files": {
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\nausentes = getattr(undertest, 'ausentes', None)\n\nclass PublicTests(unittest.TestCase):\n    def test_exemplo(self):\n        livros = { \"Metamorfose\": 30, \"O Principe\": 0, \"Vigiar e Punir\": 0, \"Dumbo\": 22}\n        assert ausentes(livros) == 2\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    },
+    "livros.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Livros estoque\n\ndef ausentes(estoque):\n    contador = 0\n    for valor in estoque.values():\n        if valor == 0:\n            contador += 1\n    \n    return contador",
+      "name": "livros.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "0e14be52fd5d93ed41871c9266299306",
+  "iid": 5847213833977856,
+  "activity_revision": "1.0.0"
+}

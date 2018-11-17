@@ -1,0 +1,14 @@
+{
+  "files": {
+    "unidae.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Unidade de medida\n\ndef xplit(frase):\n    lista = []\n    palavra = \"\"\n    for caracter in frase:\n        if caracter == \" \":\n            lista.append(palavra)\n            palavra = \"\"\n        if caracter != \" \":\n            palavra += caracter\n        \n    lista.append(palavra)\n    return lista\n    \n        \nmedidas = {\"km\": 1000, \"hm\": 100, \"dam\": 10, \"m\": 1, \"dm\": 0.1, \"cm\":  0.01, \"mm\":  0.001}\nlista_saida = []\nwhile True:\n    sentenca = raw_input()\n    lista_palavras = xplit(sentenca)\n    if lista_palavras[0] == \"0\" and lista_palavras[2] == \"0\": break\n        \n    soma = 0\n    for i in range(len(lista_palavras)):\n        if i % 2 == 0:\n            soma += float(lista_palavras[i]) * medidas[lista_palavras[i + 1]]\n\n    lista_saida.append(soma)\n\nfor resultado in lista_saida:\n    print \"%.2f m\" % resultado",
+      "name": "unidae.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "34795db854832a7e3f4a46a3e8dd7d65",
+  "iid": 5831675246280704,
+  "activity_revision": "1.0.0"
+}

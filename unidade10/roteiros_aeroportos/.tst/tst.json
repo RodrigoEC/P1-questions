@@ -1,0 +1,19 @@
+{
+  "files": {
+    "roteiros.py": {
+      "category": "answer",
+      "data": "# coding: utf-8\n# Aluno: Rodrigo Eloy Cavalcanti\n# Matr\u00edcula: 118210111\n# Roteiros Aeroportos\n\ndef my_in(lista, elemento):\n    for e in lista:\n        if e == elemento:\n            return True\n\n    return False\n\n\ndef eh_roteiro(iata, voos, roteiro):\n    lista_lugares = roteiro.split(\"/\")\n\n    for i in range(len(lista_lugares) - 1):\n        partida = lista_lugares[i]\n        destino = lista_lugares[i + 1]\n        \n        if my_in(voos[iata[partida]], iata[destino]) == False:\n            return False \n\n    return True",
+      "name": "roteiros.py"
+    },
+    "public_tests.py": {
+      "category": "public",
+      "data": "import unittest\nimport sys\n\nundertest = __import__(sys.argv[-1].split(\".py\")[0])\neh_roteiro = getattr(undertest, 'eh_roteiro', None)\n\nclass AcceptanceTests(unittest.TestCase):\n\n    def teste_exemplo(self):\n        iata = {\"Campina Grande\": \"CPV\",\n               \"Recife\": \"REC\",\n               \"Salvador\": \"SSA\",\n               \"Brasilia\": \"BSB\",\n               \"Sao Paulo\": \"GRU\",\n               \"Rio de Janeiro\": \"GIG\"}\n\n\n        voos = {\"CPV\": [\"REC\", \"SSA\"],\n               \"REC\": [\"CPV\", \"BSB\", \"GRU\", \"GIG\"],\n               \"SSA\": [\"REC\", \"GRU\", \"GIG\"],\n               \"BSB\": [\"CPV\", \"GIG\", \"GRU\"],\n               \"GRU\": [\"GIG\", \"BSB\"],\n               \"GIG\": [\"GRU\", \"REC\"]}\n\n\n        assert eh_roteiro(iata, voos, \"Campina Grande/Recife/Rio de Janeiro\")\n        assert eh_roteiro(iata, voos, \"Sao Paulo/Rio de Janeiro/Recife/Brasilia\")\n        assert not eh_roteiro(iata, voos, \"Recife/Rio de Janeiro/Salvador/Recife\")\n\nif __name__ == '__main__':\n    loader = unittest.TestLoader()\n    runner = unittest.TextTestRunner()\n    runner.run(loader.loadTestsFromModule(sys.modules[__name__]))\n",
+      "name": "public_tests.py"
+    }
+  },
+  "kind": "assignment",
+  "name": null,
+  "checksum": "85a04a950be368f76dd5ec56693a4f66",
+  "iid": 5808318610145280,
+  "activity_revision": "1.0.0"
+}

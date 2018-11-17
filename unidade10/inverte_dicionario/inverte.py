@@ -2,30 +2,28 @@
 # Aluno: Rodrigo Eloy Cavalcanti
 # Matrícula: 118210111
 # Inverte dicionario
+    
+def ordem(lista):
+	for i in range(len(lista)-1, 0, -1):
+		if lista[i] < lista[i-1]:
+			lista[i-1], lista[i] = lista[i], lista[i-1]
+		else:
+			break
 
-def inverte_dicionario(d):
-    dicionario = {}
+def meu_in(dic, ele):
+	for chave in dic.keys():
+		if chave == ele:
+			return True
+	return False
 
-    for (key, valor) in d.items():
-        if type(valor) == list:
-            for v in valor:
-                if dicionario.has_key(v):
-                    dicionario[v].append(key)
-            
-                else:
+def inverte_dicionario(dic):
+	cache = {}
+	for chave, valor in dic.iteritems():
+		if meu_in(cache, valor):
+			cache[valor].append(chave)
+			ordem(cache[valor])
 
-                    dicionario[v] = [key]
+		else:
+			cache[valor] = [chave]
 
-        else:
-            if dicionario.has_key(valor):
-                dicionario[valor].append(key)
-            
-            else:
-
-                dicionario[valor] = [key]
-
-    return dicionario
-
-m = {"c": 0 , "b": 0}
-
-print inverte_dicionario(m)
+	return cache
